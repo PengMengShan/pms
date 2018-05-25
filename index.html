@@ -14,6 +14,7 @@
 <!-- js -->
  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
  <script type="text/javascript" src="js/background.js"></script>
+ <script type="text/javascript" src="js/loading.js"></script>
 
 
 <!-- //js -->
@@ -29,11 +30,49 @@
 	#demo-pie-3 canvas{
 	  display:none !important;
 	}
+
+#loading {}
+
+#loading div {
+   width: 100%;
+   height: 50%;
+   position: absolute;
+   left: 0;
+   background: #050e1a;
+    /*background: #009ee0;*/
+   z-index: 50;
+   transition: 1s;
+}
+
+#loading div:nth-of-type(1) {
+   top: 0;
+}
+
+#loading div:nth-of-type(2) {
+   bottom: 0;
+}
+
+#loading span {
+   width: 0%;
+   height: 4px;
+   background: white;
+   position: absolute;
+   left: 0;
+   top: 50%;
+   margin-top: -2px;
+   z-index: 60;
+   transition: .5s;
+}
+
 </style>
 <!-- banner开始 -->
 
     <canvas id="canvas"></canvas>
-
+ <div id="loading">
+         <div></div>
+         <div></div>
+         <span></span>
+      </div>
 <div class="header-top">
 	<div class="container">
 
@@ -331,3 +370,11 @@ div
 
 </body>
 </html>
+<script>
+var se = document.documentElement.scrollTop
+
+if (se > 10) {
+   $("#loading").css("display", "none");
+}
+
+</script>
